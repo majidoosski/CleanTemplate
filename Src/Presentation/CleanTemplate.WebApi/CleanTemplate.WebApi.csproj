@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="8.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\CleanTemplate.Application\CleanTemplate.Application.csproj" />
+    <ProjectReference Include="..\..\Core\CleanTemplate.Domain\CleanTemplate.Domain.csproj" />
+    <ProjectReference Include="..\..\InfraStructure\CleanTemplate.Persistence\CleanTemplate.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>
