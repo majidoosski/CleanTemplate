@@ -1,5 +1,6 @@
 ﻿using CleanTemplate.Persistence.Context;
 using CleanTemplate.Persistence.Identity.Providers;
+using CleanTemplate.Persistence.Providers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,12 +26,14 @@ namespace CleanTemplate.Persistence
             return services;
         }
 
-        public static async Task InitPersistence(this IServiceProvider service, IConfiguration configuration)
+        public static async Task InitPersistence(this IServiceProvider provider, IConfiguration configuration)
         {
-            var context = service.GetRequiredService<ApplicationContext>();
-            
-            //applying migrations to dataBase
-            await context.Database.MigrateAsync();
+            await provider.SeedDataAsync();
+
+            //var provider = service.GetRequiredService<ApplicationContext>();
+            //var context=provider
+            ////applying migrations to dataBase
+            //await context.Database.MigrateAsync();
 
 
         }
