@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanTemplate.WebApi.Controllers
@@ -8,6 +9,7 @@ namespace CleanTemplate.WebApi.Controllers
     public class ValuesController : ControllerBase
     {
         [HttpGet]
+        [Authorize]
         public int GetValue()
         {
             return 1; 

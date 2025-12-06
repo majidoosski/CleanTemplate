@@ -22,6 +22,7 @@ namespace CleanTemplate.Persistence
             });
 
             services.ConfigureIdentity();
+            services.ConfigureAuthentication(configuration);
 
             return services;
         }

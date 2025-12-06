@@ -1,4 +1,5 @@
 ﻿using CleanTemplate.Application;
+using CleanTemplate.Application.Common.AppSettings;
 using CleanTemplate.Persistence;
 using CleanTemplate.WebApi.Providers;
 
@@ -18,6 +19,7 @@ namespace CleanTemplate.WebApi
         {
             services.AddPersistence(_configuration);
             services.AddApplication(_configuration);
+            services.AddAuthentication();
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.ConfigureSwaggerServices();
@@ -27,6 +29,8 @@ namespace CleanTemplate.WebApi
         {
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseSwagger(options => options.RouteTemplate = "api-docs/{documentName}/swagger.json");
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/api-docs/v1/swagger.json", "v1"); });
             app.MapControllers();

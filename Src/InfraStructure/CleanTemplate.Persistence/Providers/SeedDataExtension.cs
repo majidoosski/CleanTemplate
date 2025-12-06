@@ -18,12 +18,10 @@ public static class SeedDataExtension
     public static async Task SeedDataAsync(this IServiceProvider provider)
     {
         using var scope = provider.CreateScope();
-
         var context = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
 
         //first apply migrations to dataBase 
         await context.Database.MigrateAsync();
-
         #region CreateUserAndRole
         var userManger = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
         var roleManger = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
@@ -65,6 +63,8 @@ public static class SeedDataExtension
         }
 
         #endregion
+        
+
     }
 
 }

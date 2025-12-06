@@ -19,7 +19,6 @@ namespace CleanTemplate.Persistence.Identity.Providers
                 .AddDefaultTokenProviders()
                 .AddRoles<ApplicationRole>()
                 ;
-
         }
 
     }
