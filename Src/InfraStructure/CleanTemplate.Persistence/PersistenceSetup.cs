@@ -23,7 +23,7 @@ namespace CleanTemplate.Persistence
 
             services.ConfigureIdentity();
             services.ConfigureAuthentication(configuration);
-
+            services.AddInfraStructureServices();
             return services;
         }
 

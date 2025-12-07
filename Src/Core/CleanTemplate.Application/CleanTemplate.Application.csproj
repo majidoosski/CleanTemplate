@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CleanTemplate.Domain\CleanTemplate.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Contracts\Repositories\" />
+  </ItemGroup>
+
 </Project>
