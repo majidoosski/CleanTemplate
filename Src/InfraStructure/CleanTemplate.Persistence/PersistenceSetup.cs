@@ -10,33 +10,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistence
+namespace CleanTemplate.Persistence;
+
+public static class PersistenceSetup
 {
-    public static class PersistenceSetup
+    public static IServiceCollection AddPersistence(this IServiceCollection services , IConfiguration configuration)
     {
-        public static IServiceCollection AddPersistence(this IServiceCollection services , IConfiguration configuration)
+        services.AddDbContext<ApplicationContext>(options =>
         {
-            services.AddDbContext<ApplicationContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("CleanTemplate.Persistence"));
-            });
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("CleanTemplate.Persistence"));
+        });
 
-            services.ConfigureIdentity();
-            services.ConfigureAuthentication(configuration);
-            services.AddInfraStructureServices();
-            return services;
-        }
+        services.ConfigureIdentity();
+        services.ConfigureAuthentication(configuration);
+        services.AddInfraStructureServices();
+        return services;
+    }
 
-        public static async Task InitPersistence(this IServiceProvider provider, IConfiguration configuration)
-        {
-            await provider.SeedDataAsync();
+    public static async Task InitPersistence(this IServiceProvider provider, IConfiguration configuration)
+    {
+        await provider.SeedDataAsync();
 
-            //var provider = service.GetRequiredService<ApplicationContext>();
-            //var context=provider
-            ////applying migrations to dataBase
-            //await context.Database.MigrateAsync();
+        //var provider = service.GetRequiredService<ApplicationContext>();
+        //var context=provider
+        ////applying migrations to dataBase
+        //await context.Database.MigrateAsync();
 
 
-        }
     }
 }
