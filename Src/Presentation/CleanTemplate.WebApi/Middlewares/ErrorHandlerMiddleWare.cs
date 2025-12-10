@@ -1,11 +1,9 @@
 ﻿using CleanTemplate.Application.Common.Exceptions;
 using CleanTemplate.Application.Wrappers;
-using CleanTemplate.Persistence.Context;
 using Microsoft.AspNetCore.Diagnostics;
 using Serilog;
 using System.Net;
 using System.Text.Json;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace CleanTemplate.WebApi.Middlewares;
 
@@ -22,12 +20,12 @@ public static class ErrorHandlerMiddleWare
             configure.Run(async context =>
             {
 
+                var logger=context.RequestServices.GetRequiredService<Serilog.ILogger>();
+
                 var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                 if (contextFeature == null) return;
 
                 //Use logger from serilog
-
-                Log.Error($"An error has occurred with this message:'{contextFeature.Error.Message}'");
 
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = contextFeature.Error switch
