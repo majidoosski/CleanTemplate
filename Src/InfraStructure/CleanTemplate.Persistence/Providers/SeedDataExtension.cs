@@ -44,27 +44,19 @@ public static class SeedDataExtension
 
         }
         if ( !await userManger.Users.AnyAsync()){
-                
             var user = new ApplicationUser()
             {
                 FirstName = "Majid",
                 LastName = "Akbari",
                 UserName = "Majidoosski",
             };
-
             await userManger.CreateAsync(user, "M@j1551687");
-
             var result = await userManger.IsInRoleAsync(user, AppRoles.SuperAdminRoleName);
-
             if (!result)
             {
                  await userManger.AddToRoleAsync(user, AppRoles.SuperAdminRoleName);
             }
         }
-
         #endregion
-        
-
     }
-
 }

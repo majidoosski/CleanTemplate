@@ -1,5 +1,6 @@
 ﻿using CleanTemplate.Application.Contracts;
 using CleanTemplate.Persistence.Identity.Services;
+using CleanTemplate.Persistence.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
