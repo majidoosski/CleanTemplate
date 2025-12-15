@@ -14,6 +14,14 @@ public static class ServiceRegisterExtension
 {
     public static void AddInfraStructureServices(this IServiceCollection services)
     {
-        services.AddTransient<IAuthenticationService,AuthenticationServices>();
+        #region Transuent
+        services.AddTransient<IAuthenticationRepository,AuthenticationServices>();
+        services.AddTransient<ICurrentUserService, CurrnetUserService>();
+        #endregion
+
+        #region Scoped
+        services.AddScoped<IUnitOfWorkRepository, UnitOfWorkService>();
+
+        #endregion
     }
 }

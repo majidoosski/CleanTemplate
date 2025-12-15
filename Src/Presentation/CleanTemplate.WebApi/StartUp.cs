@@ -19,6 +19,7 @@ namespace CleanTemplate.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddPersistence(_configuration);
             services.AddApplication(_configuration);
             services.AddAuthentication();

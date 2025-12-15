@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistence.Identity.Services;
 
-public class AuthenticationServices : IAuthenticationService
+public class AuthenticationServices : IAuthenticationRepository
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<ApplicationRole> _roleManager;
@@ -107,9 +107,9 @@ public class AuthenticationServices : IAuthenticationService
 
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-            new Claim(JwtRegisteredClaimNames.Jti, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Name, user.UserName ?? ""),
             new Claim("UserId", user.Id.ToString())
         }
         .Union(userClaims)

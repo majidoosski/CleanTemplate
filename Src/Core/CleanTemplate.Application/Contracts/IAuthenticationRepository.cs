@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Application.Contracts;
 
-public interface IAuthenticationService
+public interface IAuthenticationRepository
 {
     public Task<ApplicationResponse<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request);
     public Task<ApplicationResponse<string>> RegisterAsync(RegisterRequest request, string origin);
