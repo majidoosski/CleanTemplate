@@ -13,7 +13,7 @@ public interface IApplicationRepository<TEntity, TKey>
     
 {
     public Task<IEnumerable<TEntity>> GetAllEntities();
-    public Task<TEntity> GetById(TKey id);
+    public Task<TEntity?> GetById(TKey id);
     public Task Update(TEntity entity);
     public Task DeleteById(TKey id);
     public Task<TKey> Insert(TEntity entity);
