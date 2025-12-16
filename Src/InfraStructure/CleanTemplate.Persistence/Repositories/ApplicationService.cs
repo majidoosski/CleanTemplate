@@ -44,15 +44,11 @@ public class ApplicationService<TEntity, TKey> : IApplicationRepository<TEntity,
     public async Task<TKey> Insert(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
-
-        await _context.SaveChangesAsync();
-
         return entity.Id;
     }
 
     public async Task Update(TEntity entity)
     {
         _context.Set<TEntity>().Update(entity);
-        await _context.SaveChangesAsync();
     }
 }

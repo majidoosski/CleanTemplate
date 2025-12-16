@@ -10,6 +10,7 @@ namespace CleanTemplate.Application.Contracts;
 public interface IApplicationRepository<TEntity, TKey> 
     where TEntity : BaseEntity<TKey>
     where TKey : notnull
+    
 {
     public Task<IEnumerable<TEntity>> GetAllEntities();
     public Task<TEntity> GetById(TKey id);
