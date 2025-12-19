@@ -95,31 +95,37 @@ public class AuthenticationServices : IAuthenticationRepository
     }
     private async Task<JwtSecurityToken> GenerateJWToken(ApplicationUser user)
     {
-        var userClaims = await _userManager.GetClaimsAsync(user);
-        var roles = await _userManager.GetRolesAsync(user);
 
-        var roleClaims = new List<Claim>();
 
-        for (int i = 0; i < roles.Count; i++)
-        {
-            roleClaims.Add(new Claim("roles", roles[i]));
-        }
-
-        var claims = new[]
+        var claims = new List<Claim>()
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
             new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
             new Claim(ClaimTypes.Name, user.UserName ?? ""),
             new Claim("UserId", user.Id.ToString())
+        };
+
+        var roles = await _userManager.GetRolesAsync(user);
+
+        foreach (var userRole in roles)
+        {
+            claims.Add(new Claim("roles", userRole));
+
+            var role = await _roleManager.FindByNameAsync(userRole);
+
+            if(role == null)
+                continue;
+
+            var roleClaims=await _roleManager.GetClaimsAsync(role);
+
+            foreach (var roleClaim in roleClaims)
+            {
+                claims.Add(roleClaim);
+            }
+
         }
-        .Union(userClaims)
-        .Union(roleClaims);
-
-        //claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
         var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSetiing.AccessTokenKey));
         var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
-
         var jwtSecurityToken = new JwtSecurityToken(
                 issuer: _jwtSetiing.Issuer,
                 audience: _jwtSetiing.Audience,
@@ -132,6 +138,4 @@ public class AuthenticationServices : IAuthenticationRepository
         //claims.AddRange(userClaims.Select(userClaim => new Claim(ClaimTypes.UserData, userClaim)));
 
     }
-
-   
 }

@@ -1,4 +1,5 @@
-﻿using CleanTemplate.Persistence.Identity.Entities;
+﻿using CleanTemplate.Domain.Entities;
+using CleanTemplate.Persistence.Identity.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,4 +18,8 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser,ApplicationR
     protected ApplicationContext()
     {
     }
+
+    public DbSet<ApplicationPermissions> ApplicationPermissions { get; set; }
+    public DbSet<ApplicationRolePermissions> ApplicationRolePermissions { get; set; }
+
 }

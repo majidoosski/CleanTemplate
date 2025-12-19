@@ -10,10 +10,11 @@ namespace CleanTemplate.WebApi.Controllers
     public class ValuesController : ControllerBase
     {
         [HttpGet]
-        [Authorize]
+        [Authorize(policy: "Manager")]
         public int GetValue()
         {
             return 1; 
         }
     }
 }
+    

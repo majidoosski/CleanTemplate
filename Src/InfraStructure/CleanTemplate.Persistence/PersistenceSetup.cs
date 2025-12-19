@@ -23,6 +23,7 @@ public static class PersistenceSetup
 
         services.ConfigureIdentity();
         services.ConfigureAuthentication(configuration);
+        services.ConfigureAuthorization();
         services.AddInfraStructureServices();
         return services;
     }
@@ -35,7 +36,6 @@ public static class PersistenceSetup
         //var context=provider
         ////applying migrations to dataBase
         //await context.Database.MigrateAsync();
-
 
     }
 }

@@ -43,7 +43,7 @@ public static class SeedDataExtension
             }
 
         }
-        if ( !await userManger.Users.AnyAsync()){
+        if (!await userManger.Users.AnyAsync()){
             var user = new ApplicationUser()
             {
                 FirstName = "Majid",

@@ -10,10 +10,10 @@ namespace CleanTemplate.WebApi.Controllers
     [ApiController]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationService _authenticationService;
-        public AuthenticationController(IAuthenticationService authenticationService)
+        private readonly IAuthenticationRepository _authenticationRepository;
+        public AuthenticationController(IAuthenticationRepository authenticationRepository)
         {
-            _authenticationService = authenticationService;
+            _authenticationRepository = authenticationRepository;
         }
 
 
@@ -28,7 +28,7 @@ namespace CleanTemplate.WebApi.Controllers
         
         public async Task<IActionResult> Authenticate(AuthenticationRequest request) 
         {
-            return Ok(await _authenticationService.AuthenticateAsync(request));  
+            return Ok(await _authenticationRepository.AuthenticateAsync(request));  
         }
     }
 }

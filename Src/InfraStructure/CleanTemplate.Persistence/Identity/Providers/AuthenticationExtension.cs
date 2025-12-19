@@ -50,7 +50,7 @@ public static class AuthenticationExtension
                         context.HandleResponse();
                         context.Response.StatusCode = 401;
                         context.Response.ContentType = "application/json";
-                        var result = JsonConvert.SerializeObject(new ApplicationResponse<string>("You are not Authorized"));
+                        var result = JsonConvert.SerializeObject(new ApplicationResponse<string>("You are not authorized"));
                         return context.Response.WriteAsync(result);
 
                     },
