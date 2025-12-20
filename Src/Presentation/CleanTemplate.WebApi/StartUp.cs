@@ -4,7 +4,10 @@ using CleanTemplate.Persistence;
 using CleanTemplate.Persistence.Identity.Entities;
 using CleanTemplate.WebApi.Middlewares;
 using CleanTemplate.WebApi.Providers;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
+using System.Net;
 
 namespace CleanTemplate.WebApi
 {
@@ -28,6 +31,7 @@ namespace CleanTemplate.WebApi
             services.ConfigureSwaggerServices();
             services.ConfigureSerilog(_configuration);
             services.ConfigurCorsPolicy(_configuration);
+            services.ConfigureHealthCheck(_configuration);
         }
 
         public void Configure(WebApplication app)
@@ -42,7 +46,15 @@ namespace CleanTemplate.WebApi
             app.UseSwaggerUI(options => { options.SwaggerEndpoint("/api-docs/v1/swagger.json", "v1"); });
             app.UseErrorHandler();
             app.MapControllers();
-            
+            app.UseHealthChecks("/api/health", options: new HealthCheckOptions()
+            {
+                ResultStatusCodes = new Dictionary<HealthStatus, int>
+                {
+                    {HealthStatus.Healthy , 200},
+                    {HealthStatus.Unhealthy , 500 },
+                    {HealthStatus.Degraded ,304},
+                },
+            });
         }
         
     }
