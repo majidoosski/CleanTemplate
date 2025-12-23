@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /Src/Presentation/CleanTemplate.WebApi/appsettings.Development.json
 /AddMigration.sh
 /Src/InfraStructure/CleanTemplate.Persistence/Migrations
+/Template
