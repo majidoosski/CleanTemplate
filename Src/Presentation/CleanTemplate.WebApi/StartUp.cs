@@ -4,6 +4,7 @@ using CleanTemplate.Persistence;
 using CleanTemplate.Persistence.Identity.Entities;
 using CleanTemplate.WebApi.Middlewares;
 using CleanTemplate.WebApi.Providers;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Serilog;
@@ -54,6 +55,12 @@ namespace CleanTemplate.WebApi
                     {HealthStatus.Unhealthy , 500 },
                     {HealthStatus.Degraded ,304},
                 },
+                //ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            app.UseHealthChecksUI(options =>
+            {
+                options.UIPath = "/healthcheck-ui";
+                //options.AddCustomStylesheet("./HealthCheck/Custom.css");
             });
         }
         

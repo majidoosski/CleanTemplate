@@ -1,5 +1,4 @@
-﻿using CleanTemplate.Domain.Entities;
-using CleanTemplate.Persistence.Identity.Entities;
+﻿using CleanTemplate.Persistence.Identity.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +6,7 @@ namespace CleanTemplate.Persistence.Context;
 
 public class ApplicationContext : IdentityDbContext<ApplicationUser,ApplicationRole,int>
 {
-    public ApplicationContext(DbContextOptions options) : base(options)
+    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
     {
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -19,7 +18,5 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser,ApplicationR
     {
     }
 
-    public DbSet<ApplicationPermissions> ApplicationPermissions { get; set; }
-    public DbSet<ApplicationRolePermissions> ApplicationRolePermissions { get; set; }
 
 }

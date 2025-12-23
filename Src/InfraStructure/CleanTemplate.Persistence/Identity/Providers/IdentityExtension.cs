@@ -14,7 +14,13 @@ namespace CleanTemplate.Persistence.Identity.Providers
     {
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            services.AddIdentity<ApplicationUser , ApplicationRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>(opt =>
+            {
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequiredLength =8;
+
+            })
                 .AddEntityFrameworkStores<ApplicationContext>()
                 .AddDefaultTokenProviders()
                 .AddRoles<ApplicationRole>()
