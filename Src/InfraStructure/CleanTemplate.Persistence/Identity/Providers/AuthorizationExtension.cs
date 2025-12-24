@@ -12,11 +12,16 @@ public static class AuthorizationExtension
 {
     public static void ConfigureAuthorization(this IServiceCollection services)
     {
+        string[] mangerRoles = new string[2] {
+
+            AppRoles.AdminRoleName,
+            AppRoles.SuperAdminRoleName,
+        };
         services.AddAuthorization(options =>
         {
             options.AddPolicy("Manager", options =>
             {
-                options.RequireRole(AppRoles.SuperAdminRoleName);
+                options.RequireRole(mangerRoles);
             });
         });
     }

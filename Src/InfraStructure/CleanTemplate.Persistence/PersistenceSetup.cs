@@ -19,12 +19,13 @@ public static class PersistenceSetup
         services.AddDbContext<ApplicationContext>(options =>
         {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("CleanTemplate.Persistence"));
+            
         });
 
         services.ConfigureIdentity();
         services.ConfigureAuthentication(configuration);
         services.ConfigureAuthorization();
-        services.AddInfraStructureServices();
+        services.AddDependencyInjection();
         return services;
     }
 

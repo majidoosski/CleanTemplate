@@ -30,8 +30,4 @@
     <ProjectReference Include="..\..\Core\CleanTemplate.Domain\CleanTemplate.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Services\" />
-  </ItemGroup>
-
 </Project>
