@@ -1,5 +1,4 @@
-﻿using CleanTemplate.Application.Wrappers;
-using CleanTemplate.Domain.Common;
+﻿using CleanTemplate.Domain.Common;
 
 namespace CleanTemplate.Application.Contracts.ApplicationContracts;
 
@@ -8,7 +7,7 @@ public interface IApplicationRepository<TEntity, TKey>
     where TKey : notnull
 
 {
-    public Task <ApplicationResponse <IEnumerable<TEntity>>> GetAll();
+    public Task<IEnumerable<TEntity>> GetAll();
     public Task<TEntity?> GetById(TKey id);
     public Task Update(TEntity entity);
     public Task DeleteById(TKey id);
