@@ -1,5 +1,5 @@
 ﻿using CleanTemplate.Application.Common.Exceptions;
-using CleanTemplate.Application.Contracts;
+using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Domain.Common;
 using CleanTemplate.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistence.Repositories;
+namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
 public class ApplicationService<TEntity, TKey> : IApplicationRepository<TEntity, TKey>
     where TEntity : BaseEntity<TKey>
@@ -25,13 +25,11 @@ public class ApplicationService<TEntity, TKey> : IApplicationRepository<TEntity,
     {
         var entity = await GetById(id);
         if (entity == null)
-            throw new NotFoundException($"not found record in {nameof(TEntity)} whith {id}");
+            throw new NotFoundException($"not found record  whith {id}");
         entity.IsDeleted = true;
-        await _context.SaveChangesAsync();
-
     }
 
-    public async Task<IEnumerable<TEntity>> GetAllEntities()
+    public async Task<IEnumerable<TEntity>> GetAll()
     {
         return await _context.Set<TEntity>().ToListAsync();
     }

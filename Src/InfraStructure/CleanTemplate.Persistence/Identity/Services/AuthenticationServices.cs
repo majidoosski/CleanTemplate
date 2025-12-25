@@ -1,5 +1,5 @@
 ﻿using CleanTemplate.Application.Common.AppSettings;
-using CleanTemplate.Application.Contracts;
+using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Application.DTOs.Authentication;
 using CleanTemplate.Application.Wrappers;
 using CleanTemplate.Persistence.Helpers;

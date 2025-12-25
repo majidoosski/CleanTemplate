@@ -1,4 +1,4 @@
-﻿using CleanTemplate.Application.Contracts;
+﻿using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Persistence.Helpers;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -9,7 +9,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistence.Repositories;
+namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
 public class CurrnetUserService : ICurrentUserService
 {

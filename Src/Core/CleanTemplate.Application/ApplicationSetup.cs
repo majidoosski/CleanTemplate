@@ -7,15 +7,17 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Application
-{
-    public static class ApplicationSetup
-    {
-        public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+namespace CleanTemplate.Application;
 
-            return services;
-        }
+public static class ApplicationSetup
+{
+    public static IServiceCollection AddApplication(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddAutoMapper(cfg =>
+        {
+            cfg.AddMaps(Assembly.GetExecutingAssembly());
+        });
+
+        return services;
     }
 }

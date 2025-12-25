@@ -1,4 +1,4 @@
-﻿using CleanTemplate.Application.Contracts;
+﻿using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Domain.Common;
 using CleanTemplate.Persistence.Context;
 using CleanTemplate.Persistence.Helpers;
@@ -12,7 +12,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanTemplate.Persistence.Repositories;
+namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
 public class UnitOfWorkService : IUnitOfWorkRepository
 {

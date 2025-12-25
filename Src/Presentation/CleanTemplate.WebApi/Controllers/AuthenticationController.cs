@@ -1,4 +1,4 @@
-﻿using CleanTemplate.Application.Contracts;
+﻿using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Application.DTOs.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;

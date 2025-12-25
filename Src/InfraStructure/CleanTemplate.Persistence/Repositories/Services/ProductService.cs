@@ -1,6 +1,7 @@
 ﻿using CleanTemplate.Application.Contracts.Repositories;
 using CleanTemplate.Domain.Entities;
 using CleanTemplate.Persistence.Context;
+using CleanTemplate.Persistence.Repositories.InfraServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ public class ProductService:ApplicationService<Product , long> ,IProductReposito
 {
     public ProductService(ApplicationContext applicationContext):base(applicationContext)
     {
+
     }
 }

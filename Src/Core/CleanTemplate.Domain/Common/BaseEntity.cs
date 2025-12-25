@@ -11,9 +11,7 @@ public  class BaseEntity<TKey>:AuditableEntity
 {
     public TKey Id { get; set; }
 
-    [AllowNull]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    [AllowNull]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 }

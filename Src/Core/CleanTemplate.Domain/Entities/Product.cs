@@ -16,16 +16,16 @@ namespace CleanTemplate.Domain.Entities;
 public class Product:BaseEntity<long>
 {
     [Description("")]
-    public decimal? Price { get; set; }
+    [Required]
+    public decimal Price { get; set; }
     
     [Description("")]
+    [Required]
     public int Count { get; set; }
-    [Required]
+    
     [MaxLength(100)]
-    public string SerialNumber { get; set; }
-    [AllowNull]
-    public string ImagePath { get; set; }
-    [Required]
-    public string  Type { get; set; }
+    public string? SerialNumber { get; set; }
+    public string? ImagePath { get; set; }
+    public string?  Type { get; set; }
 }
 
