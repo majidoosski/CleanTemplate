@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
-public class CurrnetUserService : ICurrentUserService
+public class CurrnetUserRepository : ICurrentUserService
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public CurrnetUserService(IHttpContextAccessor httpContextAccessor)
+    public CurrnetUserRepository(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
     }

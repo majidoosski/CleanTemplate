@@ -14,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
-public class UnitOfWorkService : IUnitOfWorkRepository
+public class UnitOfWorkRepository : IUnitOfWorkRepository
 {
     private readonly ApplicationContext _context;
     private ICurrentUserService _currentUserService;
-    public UnitOfWorkService(ApplicationContext context, ICurrentUserService currentUserService)
+    public UnitOfWorkRepository(ApplicationContext context, ICurrentUserService currentUserService)
     {
         _context = context;
         _currentUserService = currentUserService;

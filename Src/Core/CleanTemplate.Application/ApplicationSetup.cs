@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using CleanTemplate.Application.Services.Product;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ public static class ApplicationSetup
         {
             cfg.AddMaps(Assembly.GetExecutingAssembly());
         });
+
+        services.AddScoped(typeof(ProductService));
 
         return services;
     }

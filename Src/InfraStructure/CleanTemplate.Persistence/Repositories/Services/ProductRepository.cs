@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistence.Repositories.Services;
 
-public class ProductService:ApplicationService<Product , long> ,IProductRepository
+public class ProductRepository:ApplicationRepository<Product , long> ,IProductRepository
 {
-    public ProductService(ApplicationContext applicationContext):base(applicationContext)
+    public ProductRepository(ApplicationContext applicationContext):base(applicationContext)
     {
 
     }

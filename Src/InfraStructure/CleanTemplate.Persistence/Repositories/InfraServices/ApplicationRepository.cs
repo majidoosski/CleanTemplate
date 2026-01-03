@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace CleanTemplate.Persistence.Repositories.InfraServices;
 
-public class ApplicationService<TEntity, TKey> : IApplicationRepository<TEntity, TKey>
+public class ApplicationRepository<TEntity, TKey> : IApplicationRepository<TEntity, TKey>
     where TEntity : BaseEntity<TKey>
     where TKey : notnull
 {
     private readonly ApplicationContext _context;
-    public ApplicationService(ApplicationContext context)
+    public ApplicationRepository(ApplicationContext context)
     {
         _context = context;
     }

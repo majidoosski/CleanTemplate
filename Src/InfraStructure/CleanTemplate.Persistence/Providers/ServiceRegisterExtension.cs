@@ -13,11 +13,11 @@ public static class ServiceRegisterExtension
     {
         #region Transient
         services.AddTransient<IAuthenticationRepository, AuthenticationServices>();
-        services.AddTransient<ICurrentUserService, CurrnetUserService>();
-        services.AddTransient<IProductRepository, ProductService>();
+        services.AddTransient<ICurrentUserService, CurrnetUserRepository>();
+        services.AddTransient<IProductRepository, ProductRepository>();
         #endregion
         #region Scoped
-        services.AddScoped<IUnitOfWorkRepository, UnitOfWorkService>();
+        services.AddScoped<IUnitOfWorkRepository, UnitOfWorkRepository>();
 
         #endregion
         #region SingleTon
