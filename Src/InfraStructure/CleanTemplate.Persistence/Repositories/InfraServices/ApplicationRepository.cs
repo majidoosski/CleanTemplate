@@ -39,7 +39,7 @@ public class ApplicationRepository<TEntity, TKey> : IApplicationRepository<TEnti
         return await _context.Set<TEntity>().FirstOrDefaultAsync(x => x.Id.Equals(id));
     }
 
-    public async Task<TKey> Insert(TEntity entity)
+    public async Task<TKey> Create(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
         return entity.Id;

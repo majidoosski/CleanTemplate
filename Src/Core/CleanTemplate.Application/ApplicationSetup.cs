@@ -1,12 +1,8 @@
 ﻿using CleanTemplate.Application.Services.Product;
+using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanTemplate.Application;
 
@@ -20,6 +16,10 @@ public static class ApplicationSetup
         });
 
         services.AddScoped(typeof(ProductService));
+        services.AddValidatorsFromAssemblies(
+                AppDomain.CurrentDomain.GetAssemblies()
+            );
+
 
         return services;
     }

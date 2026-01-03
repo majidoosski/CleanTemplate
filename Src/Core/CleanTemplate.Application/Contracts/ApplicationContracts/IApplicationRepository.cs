@@ -11,5 +11,5 @@ public interface IApplicationRepository<TEntity, TKey>
     public Task<TEntity?> GetById(TKey id);
     public Task Update(TEntity entity);
     public Task DeleteById(TKey id);
-    public Task<TKey> Insert(TEntity entity);
+    public Task<TKey> Create(TEntity entity);
 }
