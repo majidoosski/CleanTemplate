@@ -1,4 +1,6 @@
-﻿using CleanTemplate.Application.Services.Product;
+﻿using CleanTemplate.Application.DTOs.Product;
+using CleanTemplate.Application.Services.Product;
+using CleanTemplate.Application.Validations.Product;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +18,9 @@ public static class ApplicationSetup
         });
 
         services.AddScoped(typeof(ProductService));
-        services.AddValidatorsFromAssemblies(
-                AppDomain.CurrentDomain.GetAssemblies()
-            );
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
+        //services.AddScoped<IValidator<ProductDTO>, ProductValidator>();
 
         return services;
     }

@@ -26,6 +26,7 @@ public static class PersistenceSetup
         services.ConfigureAuthentication(configuration);
         services.ConfigureAuthorization();
         services.AddDependencyInjection();
+
         return services;
     }
 

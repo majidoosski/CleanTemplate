@@ -2,13 +2,10 @@
 using CleanTemplate.Application.Contracts.ApplicationContracts;
 using CleanTemplate.Application.Contracts.Repositories;
 using CleanTemplate.Application.DTOs.Product;
-using CleanTemplate.Application.Validations.Product;
 using CleanTemplate.Application.Views.Product;
 using CleanTemplate.Application.Wrappers;
-using CleanTemplate.Domain.Entities;
 using FluentValidation;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
 
 namespace CleanTemplate.Application.Services.Product;
 
@@ -54,7 +51,7 @@ public class ProductService
             {
                 applicationResponse.Errors.Add(error.ErrorMessage);
             }
-            applicationResponse.Message = "request model is not valid.";
+            applicationResponse.Message = "Validation problem.";
 
             return applicationResponse;
         }
@@ -66,7 +63,7 @@ public class ProductService
 
             _logger.LogInformation("product creation is done");
 
-            applicationResponse.Succeeded =true;
+            applicationResponse.Succeeded = true;
             applicationResponse.Data = entity.Id;
             applicationResponse.Message = $"product created at {DateTime.Now}";
 
@@ -77,7 +74,7 @@ public class ProductService
         catch (Exception ex)
         {
 
-            _logger.LogError(ex,"Product creation failed for DTO {@ProductDTO} at {Time}",productDTO,DateTime.UtcNow);
+            _logger.LogError(ex, "Product creation failed for DTO {@ProductDTO} at {Time}", productDTO, DateTime.UtcNow);
 
             applicationResponse.Succeeded = false;
             applicationResponse.Message = "An unexpected error occurred while creating the product";
